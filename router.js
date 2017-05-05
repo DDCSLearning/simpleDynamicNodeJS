@@ -1,9 +1,11 @@
 const Profile = require("./profile.js");
+var render = require("./render");
 
 function home (req, res) {
   if (req.url === "/") {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
+    render.view("header", {}, res);
     res.end('End of the response\n');
   }
 }
