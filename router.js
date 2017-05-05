@@ -6,6 +6,8 @@ function home (req, res) {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     render.view("header", {}, res);
+    render.view("search", {}, res);
+    render.view("footer", {}, res);
     res.end('End of the response\n');
   }
 }
@@ -13,8 +15,7 @@ function home (req, res) {
 function user (req, res) {
   var username = req.url.replace("/", "");
   if (username.length > 0 ) {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
+    
 
     var studentProfile = new Profile(username)
     studentProfile.on('end', function(data) {
@@ -24,15 +25,22 @@ function user (req, res) {
         badges: data.badges.length,
         javascript: data.points.javascript
       }
-      res.write(values.username + ' has ' + values.badges + ' badges\n');
+      res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    render.view("header", {}, res);
+    render.view("profile", values, res);
+    render.view("search", {}, res);
+    render.view("footer", {}, res);
       res.end('End of the response\n');
     });
 
     studentProfile.on('error', function(err) {
-      res.write(err.message);
+      render.view("header", {}, res);
+      render.view("error", {errorMessage: err.message}, res)
+      render.view("search", {}, res);
+      render.view("footer", {}, res);
       res.end('End of the response\n');
     });
-
   }
 }
 
