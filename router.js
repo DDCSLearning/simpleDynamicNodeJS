@@ -1,10 +1,10 @@
 const Profile = require("./profile.js");
 var render = require("./render");
+var commonHeader = {'Content-Type': 'html'};
 
 function home (req, res) {
   if (req.url === "/") {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
+    res.writeHead(200, commonHeader);
     render.view("header", {}, res);
     render.view("search", {}, res);
     render.view("footer", {}, res);
@@ -25,11 +25,9 @@ function user (req, res) {
         badges: data.badges.length,
         javascript: data.points.JavaScript
       }
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
+    res.writeHead(200, commonHeader);
     render.view("header", {}, res);
     render.view("profile", values, res);
-    render.view("search", {}, res);
     render.view("footer", {}, res);
       res.end('End of the response\n');
     });
