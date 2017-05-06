@@ -11,11 +11,10 @@ function home(req, res) {
       render.view("search", {}, res);
       render.view("footer", {}, res);
       res.end('End of the response\n');
-
     } else {
       req.on("data", function (postBody) {
         var query = querystring.parse(postBody.toString());
-        res.write(query.username);
+        res.writeHead(303, { "location": "/" + query.username });
         res.end();
       })
     }
