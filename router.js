@@ -10,7 +10,7 @@ function home(req, res) {
       render.view("header", {}, res);
       render.view("search", {}, res);
       render.view("footer", {}, res);
-      res.end('End of the response\n');
+      res.end();
     } else {
       req.on("data", function (postBody) {
         var query = querystring.parse(postBody.toString());
@@ -36,7 +36,7 @@ function user(req, res) {
       render.view("header", {}, res);
       render.view("profile", values, res);
       render.view("footer", {}, res);
-      res.end('End of the response\n');
+      res.end();
     });
 
     studentProfile.on('error', function (err) {
@@ -44,7 +44,7 @@ function user(req, res) {
       render.view("error", { errorMessage: err.message }, res)
       render.view("search", {}, res);
       render.view("footer", {}, res);
-      res.end('End of the response\n');
+      res.end();
     });
   }
 }

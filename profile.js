@@ -15,7 +15,7 @@ function Profile(username) {
     profileEmitter = this;
 
     //Connect to the API URL (https://teamtreehouse.com/username.json)
-    var request = https.get("https://teamtreehouse.com/" + username + ".json", function(response) {
+    var request = https.get("https://teamtreehouse.com/" + username + ".json", function (response) {
         var body = "";
 
         if (response.statusCode !== 200) {
@@ -31,7 +31,7 @@ function Profile(username) {
         });
 
         response.on('end', function () {
-            if(response.statusCode === 200) {
+            if (response.statusCode === 200) {
                 try {
                     //Parse the data
                     var profile = JSON.parse(body);
@@ -40,12 +40,12 @@ function Profile(username) {
                     profileEmitter.emit("error", error);
                 }
             }
-        }).on("error", function(error){
+        }).on("error", function (error) {
             profileEmitter.emit("error", error);
         });
     });
 }
 
-util.inherits( Profile, EventEmitter );
+util.inherits(Profile, EventEmitter);
 
 module.exports = Profile;
