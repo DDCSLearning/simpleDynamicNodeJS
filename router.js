@@ -23,9 +23,9 @@ function user (req, res) {
         avatarUrl: data.gravatar_url, 
         username: data.profile_name,
         badges: data.badges.length,
-        javascript: data.points.javascript
+        javascript: data.points.JavaScript
       }
-      res.statusCode = 200;
+    res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     render.view("header", {}, res);
     render.view("profile", values, res);
