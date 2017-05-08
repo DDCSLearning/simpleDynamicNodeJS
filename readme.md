@@ -11,7 +11,7 @@ A simple dynamic Node.js app for displaying treehouse profile data.
 
 Some parts of this example are from the JavaScript course from [Treehouse.com](https://teamtreehouse.com/tracks/full-stack-javascript).
 
-Check out my [post on medium.com]()
+Check out my [post on medium.com](https://medium.com/@ddcreationstudi)
 
 Start with treehouse here:
 <a href="http://referrals.trhou.se/danieldeutsch3" target="_blank"><img src="https://static.teamtreehouse.com/assets/content/referral-badge-grn.png"/></a>
